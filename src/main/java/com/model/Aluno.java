@@ -3,6 +3,8 @@ package com.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Aluno {
@@ -16,7 +18,10 @@ public class Aluno {
 
     private String email;
 
-    private String curso;
+    private Integer idade;
+
+    @ManyToOne
+    private Curso curso;
 
     public Aluno() {
 
@@ -34,7 +39,7 @@ public class Aluno {
         return email;
     }
 
-    public String getCurso() {
+    public Curso getCurso() {
         return curso;
     }
 
@@ -46,8 +51,16 @@ public class Aluno {
         this.email = email;
     }
 
-    public void setCurso(String curso) {
+    public void setCurso(Curso curso) {
         this.curso = curso;
+    }
+
+    public Integer getIdade() {
+        return idade;
+    }
+
+    public void setIdade(Integer idade) {
+        this.idade = idade;
     }
 
 }

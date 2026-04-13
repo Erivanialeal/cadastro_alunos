@@ -17,11 +17,11 @@ public class TesteUpdate {
 
         try {
             // buscar
-            Aluno aluno = em.find(Aluno.class, 1L);
+            Aluno aluno = em.find(Aluno.class, 2L);
             if (aluno != null) {
                 System.out.println("Atualizar dados do aluno.");
-                aluno.setNome("Eduarda");
-                aluno.setEmail("Eduarda@gmail.com");
+                aluno.setNome("Carlos Eduarco");
+                aluno.setIdade(55);
 
                 // iniciar transação
                 em.getTransaction().begin();

@@ -1,6 +1,7 @@
 package com.erivania.Testes;
 
 import com.model.Aluno;
+import com.model.Curso;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -17,8 +18,11 @@ public class TesteInsert {
         // criar o objeto aluno
         Aluno aluno = new Aluno();
         aluno.setNome("Carlos");
-        aluno.setCurso("Educação Física");
+        Curso curso = new Curso();
+        curso.setNomeCurso("Educação Física");
+        aluno.setCurso(curso);
         aluno.setEmail("Carlos@gmail.com");
+        aluno.setIdade(24);
 
         // iniciar a transação
         em.getTransaction().begin();

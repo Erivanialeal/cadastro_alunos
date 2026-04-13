@@ -1,0 +1,25 @@
+# Compilados
+/target/
+*.class
+
+# Logs
+*.log
+
+# Configurações de IDE
+.idea/
+.vscode/
+*.iml
+
+# Arquivos temporários
+*.tmp
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos de configuração sensíveis (se aplicável)
+application.properties
+/target/
+.env
+persistence.xml
+
