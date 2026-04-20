@@ -1,12 +1,15 @@
 package com.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Curso {
@@ -15,13 +18,13 @@ public class Curso {
     @GeneratedValue
     private Long id;
 
-    private String nomeCurso;
+    private String nome;
 
-    @ManyToOne
-    private Professor Professor;
+    @ManyToMany(mappedBy = "cursos")
+    private List<Professor> professores = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "curso")
-    private List<Aluno> alunos;
+    @OneToMany(mappedBy = "curso")
+    private List<Aluno> alunos = new ArrayList<>();
 
     public Curso() {
 
@@ -31,24 +34,24 @@ public class Curso {
         return id;
     }
 
-    public String getNomeCurso() {
-        return nomeCurso;
+    public String getNome() {
+        return nome;
     }
 
-    public Professor getProfessor() {
-        return Professor;
+    public List<Professor> getProfessores() {
+        return professores;
     }
 
     public List<Aluno> getAlunos() {
         return alunos;
     }
 
-    public void setNomeCurso(String nomeCurso) {
-        this.nomeCurso = nomeCurso;
+    public void setNome(String nomeCurso) {
+        this.nome = nomeCurso;
     }
 
-    public void setProfessor(Professor professor) {
-        Professor = professor;
+    public void setProfessores(List<Professor> professores) {
+        this.professores = professores;
     }
 
 }

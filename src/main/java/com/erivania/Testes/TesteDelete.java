@@ -1,6 +1,7 @@
 package com.erivania.Testes;
 
 import com.model.Aluno;
+import com.model.Curso;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -14,7 +15,7 @@ public class TesteDelete {
         EntityManager em = emf.createEntityManager();
 
         try {
-            Aluno aluno = em.find(Aluno.class, 1L);
+            Aluno aluno = em.find(Aluno.class, 2);
             if (aluno != null) {
                 // iniciar transação
                 em.getTransaction().begin();

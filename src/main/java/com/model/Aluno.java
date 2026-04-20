@@ -3,8 +3,9 @@ package com.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 
 @Entity
 public class Aluno {
@@ -21,6 +22,7 @@ public class Aluno {
     private Integer idade;
 
     @ManyToOne
+    @JoinColumn(name = "curso_id")
     private Curso curso;
 
     public Aluno() {

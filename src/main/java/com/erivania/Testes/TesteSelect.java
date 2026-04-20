@@ -1,6 +1,7 @@
 package com.erivania.Testes;
 
 import com.model.Aluno;
+import com.model.Professor;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -15,26 +16,21 @@ public class TesteSelect {
 
         // tentar
         try {
-            // buscar
-            Aluno aluno = em.find(Aluno.class, 1L);
-
-            if (aluno != null) {
-                System.out.println("Aluno encontrado");
-                System.out.println("Nome: " + aluno.getNome());
-                System.out.println("Email: " + aluno.getEmail());
-                System.out.println("Curso: " + aluno.getCurso());
-            } else {
-                System.out.println("Aluno não encontrado.");
+            var alunos = em.createQuery(
+                    "SELECT a FROM Aluno a", Aluno.class).getResultList();
+            for (Aluno a : alunos) {
+                System.out.println("Nome: " + a.getNome());
+                System.out.println("Email: " + a.getId());
+                System.out.println("Curso: " + a.getCurso().getNome());
+                System.out.println("----------");
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (em != null)
-                em.close();
-            if (emf != null)
-                emf.close();
+            em.close();
+            emf.close();
         }
 
     }
-
 }

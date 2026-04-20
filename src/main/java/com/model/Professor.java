@@ -1,8 +1,14 @@
 package com.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.annotations.ManyToAny;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Professor {
@@ -12,6 +18,9 @@ public class Professor {
     private Long id;
 
     private String nome;
+
+    @ManyToMany
+    private List<Curso> cursos = new ArrayList<>();
 
     public Professor() {
 
@@ -27,6 +36,10 @@ public class Professor {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public List<Curso> getCursos() {
+        return cursos;
     }
 
 }
